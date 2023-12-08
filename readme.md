@@ -2,6 +2,10 @@
 
 Managing PDF and other files is a common task in an Application and depending on the task you may need various plugins to accomplish your needs.
 
+https://github.com/ionic-enterprise/tutorials-pdf-share-open/assets/84595830/79b1630c-66d8-46ff-a1d3-1fbd5cd30e0f
+
+
+
 ## Downloading Options
 There are various ways you **could** download a file in a Capacitor app:
 1. Use the [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) API
