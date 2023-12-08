@@ -1,0 +1,7 @@
+{
+  "name": "cs-pdf-share",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
