@@ -16,7 +16,6 @@ import { FileOpener } from '@capacitor-community/file-opener';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: true,
   imports: [
     IonHeader,
     IonToolbar,
