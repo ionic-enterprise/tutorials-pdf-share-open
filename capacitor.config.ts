@@ -3,10 +3,10 @@ import { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'cs.pdf.share',
   appName: 'cs-pdf-share',
-  webDir: 'www',
+  webDir: 'www/browser',
   server: {
-    androidScheme: 'https'
-  }
+    androidScheme: 'https',
+  },
 };
 
 export default config;
