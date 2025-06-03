@@ -1,5 +1,12 @@
 import { Component, NgZone } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonProgressBar } from '@ionic/angular/standalone';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonButton,
+  IonProgressBar,
+} from '@ionic/angular/standalone';
 import { Share } from '@capacitor/share';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { CapacitorHttp } from '@capacitor/core';
@@ -10,12 +17,19 @@ import { FileOpener } from '@capacitor-community/file-opener';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonProgressBar],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonButton,
+    IonProgressBar,
+  ],
 })
 export class HomePage {
-
   // Small PDF
-  smallFile = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+  smallFile =
+    'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
   // Large PDF (~25mb)
   largeFile = 'https://research.nhm.org/pdfs/10840/10840.pdf';
@@ -41,21 +55,23 @@ export class HomePage {
   async downloadAndShare() {
     const url = this.largeFile;
     this.downloading = true;
-    const { path } = await Filesystem.downloadFile({ directory: Directory.Cache, path: 'mypdf.pdf', url, progress: true });
+    const { path } = await Filesystem.downloadFile({
+      directory: Directory.Cache,
+      path: 'mypdf.pdf',
+      url,
+      progress: true,
+    });
     if (!path) {
       throw new Error(`Unable to download ${url}`);
     }
     this.downloading = false;
 
-    await Share.share(
-      {
-        title: 'Share PDF',
-        text: 'Share the PDF',
-        files: [path]
-      }
-    );
+    await Share.share({
+      title: 'Share PDF',
+      text: 'Share the PDF',
+      files: [path],
+    });
   }
-
 
   /**
    * This will download a small PDF file using CapacitorHttp and share it.
@@ -73,30 +89,30 @@ export class HomePage {
       //encoding: Encoding.UTF8,
     });
 
-    await Share.share(
-      {
-        title: 'Share PDF',
-        text: 'Share the PDF',
-        files: [uri]
-      }
-    );
+    await Share.share({
+      title: 'Share PDF',
+      text: 'Share the PDF',
+      files: [uri],
+    });
   }
-
 
   /**
    * This will download a PDF file and open it using @capacitor-community/file-opener
    */
   async downloadAndOpen() {
     const url = this.smallFile;
-    const { data } = await CapacitorHttp.get({ url, responseType: 'blob' });
-    const { path } = await Filesystem.downloadFile({ directory: Directory.Cache, path: 'mypdf.pdf', url });
+    await CapacitorHttp.get({ url, responseType: 'blob' });
+    const { path } = await Filesystem.downloadFile({
+      directory: Directory.Cache,
+      path: 'mypdf.pdf',
+      url,
+    });
     if (!path) {
       throw new Error(`Unable to download ${url}`);
     }
     await FileOpener.open({
       filePath: path,
-      openWithDefault: true
+      openWithDefault: true,
     });
-
   }
 }
